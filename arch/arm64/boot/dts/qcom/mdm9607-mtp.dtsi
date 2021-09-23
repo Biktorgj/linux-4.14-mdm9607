@@ -13,8 +13,6 @@
 
 #include "mdm9607.dtsi"
 #include "mdm9607-pinctrl.dtsi"
-#include "mdm9607-display.dtsi"
-#include "qpic-panel-ili-hvga.dtsi"
 
 / {
 	bluetooth: bt_qca6174 {
@@ -44,7 +42,7 @@
 };
 
 &spi_1 {
-	status = "ok";
+	status = "disabled";
 
 	can-controller@0 {
 		compatible = "fsl,k61";
@@ -159,7 +157,7 @@
 						&sdc1_wlan_gpio_sleep>;
 	qcom,nonremovable;
 	qcom,core_3_0v_support;
-	status = "ok";
+	status = "disabled";
 };
 
 &i2c_4 {
@@ -211,12 +209,3 @@
 	status = "disabled";
 };
 
-/* Display */
-&mdss_qpic {
-	pinctrl-names= "mdss_default", "mdss_sleep";
-	pinctrl-0 = <&mdss_ldo_active &mdss_cs_active &mdss_te_active
-		&mdss_rs_active &mdss_ad_active &mdss_bl_active>;
-	pinctrl-1 = <&mdss_ldo_sleep &mdss_cs_sleep &mdss_te_sleep
-		&mdss_rs_sleep &mdss_ad_sleep &mdss_bl_sleep>;
-	status = "disabled";
-};
